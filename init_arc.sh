@@ -56,7 +56,7 @@ wipefs "${part_root}"
 
 # Format partitons
 mkfs.fat -F32 "${part_boot}"
-mkfs.ext4 "${part_boot}"
+mkfs.ext4 "${part_root}"
 
 # Mount partitions
 mount "${part_root}" /mnt
