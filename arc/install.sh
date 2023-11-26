@@ -12,7 +12,7 @@ set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
 # Init pacman keys and download dialog
-pacman-key --init
+# pacman-key --init
 pacman -Sy dialog --noconfirm
 
 #   Get infomation from user
