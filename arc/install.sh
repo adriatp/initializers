@@ -106,7 +106,7 @@ initrd  /amd-ucode.img
 initrd  /initramfs-linux.img
 options root=/dev/sda2 rw
 EOF
-echo "default arch-*" > /boot/loader/loader.conf
+echo "default arch-*" > /mnt/boot/loader/loader.conf
 
 # 
 umount -a
