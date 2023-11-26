@@ -58,3 +58,18 @@ wipefs "${part_root}"
 mkfs.fat -F32 "${part_boot}"
 mkfs.ext4 "${part_boot}"
 
+# Mount partitions
+mount "${part_root}" /mnt
+mount --mkdir "${part_boot}" /mnt/boot
+
+# 
+pacstrap /mnt base linux linux-firmware nano man-db which sudo
+
+# 
+genfstab -U /mnt > /mnt/etc/fstab
+
+# 
+arch-chroot /mnt useradd -m atp
+arch-chroot /mnt usermod -aG wheel atp
+echo "$user:$password" | chpasswd --root /mnt
+sed -i '/^# %wheel ALL=(ALL:ALL) ALL$/s/^# //' /mnt/etc/sudoers
