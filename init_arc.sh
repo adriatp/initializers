@@ -45,3 +45,16 @@ parted --script "${device}" -- mklabel gpt \
   mkpart ESP fat32 1MiB 129MiB \
   set 1 boot on \
   mkpart primary ext4 129MiB 100%
+
+# Get each partition
+part_boot="$(ls ${device}* | grep -E "^${device}p?1$")"
+part_root="$(ls ${device}* | grep -E "^${device}p?2$")"
+
+# Clean firm of partitions
+wipefs "${part_boot}"
+wipefs "${part_root}"
+
+# Format partitons
+mkfs.fat -F32 "${part_boot}"
+mkfs.ext4 "${part_boot}"
+
