@@ -73,3 +73,41 @@ arch-chroot /mnt useradd -m atp
 arch-chroot /mnt usermod -aG wheel atp
 echo "$user:$password" | chpasswd --root /mnt
 sed -i '/^# %wheel ALL=(ALL:ALL) ALL$/s/^# //' /mnt/etc/sudoers
+
+# 
+ln -sf /mnt/usr/share/zoneinfo/Europe/Andorra /mnt/etc/localtime
+arch-chroot /mnt hwclock --systohc
+sed -i '/^#ca_ES\.UTF-8 UTF-8/s/^#//' /mnt/etc/locale.gen
+arch-chroot /mnt locale-gen
+echo "LANG='ca_ES.UTF-8'" > /mnt/etc/locale.conf
+echo "KEYMAP=es" > /mnt/etc/vconsole.conf
+
+cat << EOF >> /mnt/etc/hosts
+127.0.0.1 localhost
+::1       localhost
+127.0.1.1 $hostname.localdomain $hostname
+EOF
+
+# 
+pacstrap /mnt amd-ucode networkmanager 
+arch-chroot /mnt systemctl enable NetworkManager
+
+# 
+umount /mnt/boot
+mount -o uid=0,gid=0,fmask=0077,dmask=0077 /dev/sda1 /mnt/boot
+genfstab -U /mnt > /mnt/etc/fstab
+arch-chroot /mnt bootctl --path=/boot install --no-variables
+
+# 
+cat << EOF > /boot/loader/entries/arch.conf
+title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /amd-ucode.img
+initrd  /initramfs-linux.img
+options root=/dev/sda2 rw
+EOF
+echo "default arch-*" > /boot/loader/loader.conf
+
+# 
+umount -a
+reboot
