@@ -3,15 +3,17 @@
 ## Install ArchLinux
 ```bash
 loadkeys es
-systemd-resolve --flush-caches
-curl -L https://raw.githubusercontent.com/adriatp/initializers/main/arc/install.sh | sh
-reboot
+curl -L https://raw.githubusercontent.com/adriatp/initializers/main/arc/install.sh > install.sh
+chmod 777 install.sh
+./install.sh
 ```
 
 ## Install drivers
 
 ```bash
-curl -L https://raw.githubusercontent.com/adriatp/initializers/main/arc/nvidia.sh | sh
+curl -L https://raw.githubusercontent.com/adriatp/initializers/main/arc/nvidia.sh > nvidia.sh
+chmod 777 nvidia.sh
+./nvidia.sh
 ```
 
 ## TODO

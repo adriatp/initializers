@@ -2,14 +2,6 @@
 # How to run: curl -sL <link raw github> | bash 
 # Inspired by: https://github.com/korvahannu/arch-nvidia-drivers-installation-guide/tree/main
 
-# Install required packages
-sudo pacman -Syu
-sudo pacman -S base-devel linux-headers git --needed
-cd ~
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-
 # Enable multilib repository
 sudo sed -i '/^#\[multilib\]$/s/^#//' /etc/pacman.conf
 sudo sed -i '/^\[multilib\]$/{n;s/^#//}' /etc/pacman.conf
@@ -48,5 +40,5 @@ Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /
 EOF
 
 # Reboot
-rm -rf yay
+rm -rf ~/yay
 reboot

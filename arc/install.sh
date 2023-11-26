@@ -14,22 +14,17 @@ trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 #   Get infomation from user
 ##  Hostname
 read -p "hostname: " hostname
-clear
 : ${hostname:?"hostname cannot be empty"}
 ##  User
 read -p "user: " user
-clear
 : ${user:?"user cannot be empty"}
 ##  Password
-read -p "password: " password
-clear
+read -sp "password: " password
 : ${password:?"password cannot be empty"}
-read -p "password: " password2
-clear
+read -sp "password: " password2
 [[ "$password" == "$password2" ]] || ( echo "passwords did not match"; exit 1; )
 ##  Device
 read -p "device: " device
-clear
 : ${device:?"device cannot be empty"}
 
 # Set up logging
@@ -86,9 +81,12 @@ cat << EOF >> /mnt/etc/hosts
 127.0.1.1 $hostname.localdomain $hostname
 EOF
 
-# Install microcode and set networkmanager
-pacstrap /mnt amd-ucode networkmanager 
+# Set microcode, git, networkmanager and driver packages
+pacstrap /mnt amd-ucode networkmanager base-devel linux-headers git --needed
 arch-chroot /mnt systemctl enable NetworkManager
+
+# Install yay
+arch-chroot /mnt {(su $user && cd /home/$user && git clone https://aur.archlinux.org/yay.git && makepkg -si)}
 
 # Update fstab with secured mask
 umount /mnt/boot
