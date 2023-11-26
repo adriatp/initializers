@@ -99,7 +99,7 @@ genfstab -U /mnt > /mnt/etc/fstab
 arch-chroot /mnt bootctl --path=/boot install --no-variables
 
 # 
-cat << EOF > /boot/loader/entries/arch.conf
+cat << EOF > /mnt/boot/loader/entries/arch.conf
 title   Arch Linux
 linux   /vmlinuz-linux
 initrd  /amd-ucode.img
