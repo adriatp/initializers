@@ -74,7 +74,7 @@ arch-chroot /mnt usermod -aG wheel "$user"
 echo "$user:$password" | chpasswd --root /mnt
 sed -i '/^# %wheel ALL=(ALL:ALL) ALL$/s/^# //' /mnt/etc/sudoers
 
-# 
+# Update localtime and keyboard 
 ln -sf /mnt/usr/share/zoneinfo/Europe/Andorra /mnt/etc/localtime
 arch-chroot /mnt hwclock --systohc
 sed -i '/^#ca_ES\.UTF-8 UTF-8/s/^#//' /mnt/etc/locale.gen
@@ -95,7 +95,7 @@ pacstrap /mnt amd-ucode networkmanager
 arch-chroot /mnt systemctl enable NetworkManager
 
 # Update fstab with secured mask
-umount /mnt/boothttps://aur.archlinux.org/yay.git
+umount /mnt/boot
 mount -o uid=0,gid=0,fmask=0077,dmask=0077 /dev/sda1 /mnt/boot
 genfstab -U /mnt > /mnt/etc/fstab
 arch-chroot /mnt bootctl --path=/boot install --no-variables
