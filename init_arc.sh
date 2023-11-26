@@ -32,7 +32,7 @@ password2=$(dialog --stdout --passwordbox "Enter admin password again" 0 0) || e
 clear
 [[ "$password" == "$password2" ]] || ( echo "Passwords did not match"; exit 1; )
 
-devicelist=$(lsblk -dplnx size -o name,model,size | grep -Ev "boot|rpmb|loop" | awk -F '\t' '{ $2=gensub(/ /, "_", "g", $2); print $1 " " $2 "(" $3 ")"}' | tac)
+devicelist=$(lsblk -dplnx size -o name,size | grep -Ev "boot|rpmb|loop" | tac)
 device=$(dialog --stdout --menu "Select installation disk" 0 0 0 ${devicelist}) || exit 1
 clear
 
