@@ -11,30 +11,26 @@ timedatectl set-ntp true
 set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
-# Init pacman keys and download dialog
-# pacman-key --init
-pacman -Sy dialog --noconfirm
-
 #   Get infomation from user
 ##  Hostname
-hostname=$(dialog --stdout --inputbox "Enter hostname" 0 0) || exit 1
+read -p "hostname: " hostname
 clear
 : ${hostname:?"hostname cannot be empty"}
 ##  User
-user=$(dialog --stdout --inputbox "Enter admin username" 0 0) || exit 1
+read -p "user: " user
 clear
 : ${user:?"user cannot be empty"}
 ##  Password
-password=$(dialog --stdout --passwordbox "Enter admin password" 0 0) || exit 1
+read -p "password: " password
 clear
 : ${password:?"password cannot be empty"}
-password2=$(dialog --stdout --passwordbox "Enter admin password again" 0 0) || exit 1
+read -p "password: " password2
 clear
-[[ "$password" == "$password2" ]] || ( echo "Passwords did not match"; exit 1; )
-
-devicelist=$(lsblk -dplnx size -o name,size | grep -Ev "boot|rpmb|loop" | tac)
-device=$(dialog --stdout --menu "Select installation disk" 0 0 0 ${devicelist}) || exit 1
+[[ "$password" == "$password2" ]] || ( echo "passwords did not match"; exit 1; )
+##  Device
+read -p "device: " device
 clear
+: ${device:?"device cannot be empty"}
 
 # Set up logging
 exec 1> >(tee "stdout.log")
