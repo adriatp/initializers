@@ -62,15 +62,15 @@ mkfs.ext4 "${part_root}"
 mount "${part_root}" /mnt
 mount --mkdir "${part_boot}" /mnt/boot
 
-# 
+# Install linux and useful packages
 pacstrap /mnt base linux linux-firmware nano man-db which sudo
 
-# 
+# Generate partition desciption file
 genfstab -U /mnt > /mnt/etc/fstab
 
-# 
-arch-chroot /mnt useradd -m atp
-arch-chroot /mnt usermod -aG wheel atp
+# Create user and add in sudoers file
+arch-chroot /mnt useradd -m "$user"
+arch-chroot /mnt usermod -aG wheel "$user"
 echo "$user:$password" | chpasswd --root /mnt
 sed -i '/^# %wheel ALL=(ALL:ALL) ALL$/s/^# //' /mnt/etc/sudoers
 
@@ -82,23 +82,25 @@ arch-chroot /mnt locale-gen
 echo "LANG='ca_ES.UTF-8'" > /mnt/etc/locale.conf
 echo "KEYMAP=es" > /mnt/etc/vconsole.conf
 
+# Set hostname
+echo "$hostname" > /mnt/etc/hostname
 cat << EOF >> /mnt/etc/hosts
 127.0.0.1 localhost
 ::1       localhost
 127.0.1.1 $hostname.localdomain $hostname
 EOF
 
-# 
+# Install microcode and set networkmanager
 pacstrap /mnt amd-ucode networkmanager 
 arch-chroot /mnt systemctl enable NetworkManager
 
-# 
-umount /mnt/boot
+# Update fstab with secured mask
+umount /mnt/boothttps://aur.archlinux.org/yay.git
 mount -o uid=0,gid=0,fmask=0077,dmask=0077 /dev/sda1 /mnt/boot
 genfstab -U /mnt > /mnt/etc/fstab
 arch-chroot /mnt bootctl --path=/boot install --no-variables
 
-# 
+# Update systemd-boot configuration
 cat << EOF > /mnt/boot/loader/entries/arch.conf
 title   Arch Linux
 linux   /vmlinuz-linux
@@ -108,6 +110,6 @@ options root=/dev/sda2 rw
 EOF
 echo "default arch-*" > /mnt/boot/loader/loader.conf
 
-# 
-umount -a
+# Umount disks and reboot
+umount -a || true
 reboot
