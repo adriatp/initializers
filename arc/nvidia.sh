@@ -9,7 +9,6 @@ cd ~
 git clone https://aur.archlinux.org/yay.git
 cd yay
 makepkg -si
-cd ~
 
 # Enable multilib repository
 sudo sed -i '/^#\[multilib\]$/s/^#//' /etc/pacman.conf
@@ -28,6 +27,7 @@ sudo sed -i '/MODULES=()/c\MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 sudo mkinitcpio -P
 
 # Adding the Pacman Hook
+sudo mkdir /etc/pacman.d/hooks
 sudo cat << EOF > /etc/pacman.d/hooks/nvidia.hook
 [Trigger]
 Operation=Install
