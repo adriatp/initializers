@@ -85,9 +85,6 @@ EOF
 pacstrap /mnt amd-ucode networkmanager base-devel linux-headers git --needed
 arch-chroot /mnt systemctl enable NetworkManager
 
-# Install yay
-arch-chroot /mnt {(su $user && cd /home/$user && git clone https://aur.archlinux.org/yay.git && makepkg -si)}
-
 # Update fstab with secured mask
 umount /mnt/boot
 mount -o uid=0,gid=0,fmask=0077,dmask=0077 /dev/sda1 /mnt/boot

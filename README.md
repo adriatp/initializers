@@ -8,7 +8,16 @@ chmod 777 install.sh
 ./install.sh
 ```
 
-## Install drivers
+## Install yay
+
+```bash
+cd ~
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+```
+
+## Nvidia drivers
 
 ```bash
 curl -L https://raw.githubusercontent.com/adriatp/initializers/main/arc/nvidia.sh > nvidia.sh
