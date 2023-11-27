@@ -20,8 +20,10 @@ read -p "user: " user
 : ${user:?"user cannot be empty"}
 ##  Password
 read -sp "password: " password
+echo ""
 : ${password:?"password cannot be empty"}
 read -sp "password: " password2
+echo ""
 [[ "$password" == "$password2" ]] || ( echo "passwords did not match"; exit 1; )
 ##  Device
 read -p "device: " device
