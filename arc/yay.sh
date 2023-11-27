@@ -1,4 +1,10 @@
 #!/bin/bash
+
+# Redirect fails and display error msg 
+set -uo pipefail
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
+
+# Install yay
 cd ~
 git clone https://aur.archlinux.org/yay.git
 cd yay
