@@ -2,10 +2,9 @@
 # How to run: curl -sL <link raw github> | bash 
 # Inspired by: https://github.com/korvahannu/arch-nvidia-drivers-installation-guide/tree/main
 
-# Enable multilib repository
-sudo sed -i '/^#\[multilib\]$/s/^#//' /etc/pacman.conf
-sudo sed -i '/^\[multilib\]$/{n;s/^#//}' /etc/pacman.conf
-yay -Syu
+# Redirect fails and display error msg 
+set -uo pipefail
+trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
 # Install driver packages
 yay -S nvidia nvidia-utils lib32-nvidia
