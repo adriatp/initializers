@@ -18,25 +18,9 @@ sudo sed -i '/MODULES=()/c\MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 sudo mkinitcpio -P
 
 # Adding the Pacman Hook
-sudo mkdir /etc/pacman.d/hooks
-sudo cat << EOF > /etc/pacman.d/hooks/nvidia.hook
-[Trigger]
-Operation=Install
-Operation=Upgrade
-Operation=Remove
-Type=Package
-Target=nvidia
-Target=linux
-# Adjust line(6) above to match your driver, e.g. Target=nvidia-470xx-dkms
-# Change line(7) above, if you are not using the regular kernel For example, Target=linux-lts
-
-[Action]
-Description=Update Nvidia module in initcpio
-Depends=mkinitcpio
-When=PostTransaction
-NeedsTargets
-Exec=/bin/sh -c 'while read -r trg; do case \$trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
-EOF
+sudo mkdir -p /etc/pacman.d/hooks
+curl -L https://raw.githubusercontent.com/adriatp/initializers/main/arc/nvidia.hook > nvidia.hook
+sudo mv nvidia.hook /etc/pacman.d/hooks/nvidia.hook
 
 # Reboot
 rm -rf ~/yay
