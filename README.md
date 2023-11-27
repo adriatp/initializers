@@ -23,3 +23,11 @@ curl -L https://raw.githubusercontent.com/adriatp/initializers/main/arc/nvidia.s
 chmod 777 nvidia.sh
 ./nvidia.sh
 ```
+
+## Wayland
+
+```bash
+curl -L https://raw.githubusercontent.com/adriatp/initializers/main/arc/hyprland.sh > hyprland.sh
+chmod 777 hyprland.sh
+./hyprland.sh
+```
