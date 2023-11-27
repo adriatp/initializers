@@ -35,9 +35,9 @@ exec 2> >(tee "stderr.log")
 
 # Set up partitions
 parted --script "${device}" -- mklabel gpt \
-  mkpart ESP fat32 1MiB 129MiB \
+  mkpart ESP fat32 1MiB 513MiB \
   set 1 boot on \
-  mkpart primary ext4 129MiB 100%
+  mkpart primary ext4 513MiB 100%
 
 # Get each partition
 part_boot="$(ls ${device}* | grep -E "^${device}p?1$")"
