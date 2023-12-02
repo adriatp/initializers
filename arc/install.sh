@@ -85,7 +85,7 @@ EOF
 
 # Startup with net and audio
 arch-chroot /mnt systemctl enable NetworkManager
-arch-chroot /mnt su - $user -c systemctl enable --user pipewire-pulse.service
+arch-chroot /mnt su - "${user}" -c "systemctl enable --user pipewire-pulse.service"
 
 # Update fstab with secured mask
 umount /mnt/boot
