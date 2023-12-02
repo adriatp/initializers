@@ -1,6 +1,7 @@
 # Initializers
 
 ## Install ArchLinux
+
 ```bash
 loadkeys es
 curl -L https://raw.githubusercontent.com/adriatp/initializers/main/arc/install.sh > install.sh

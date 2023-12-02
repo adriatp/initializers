@@ -85,7 +85,7 @@ EOF
 
 # Startup with net and audio
 arch-chroot /mnt systemctl enable NetworkManager
-arch-chroot /mnt systemctl enable pipewire pipewire-pulse wireplumber
+arch-chroot /mnt systemctl --user enable pipewire pipewire-pulse wireplumber
 
 # Update fstab with secured mask
 umount /mnt/boot
