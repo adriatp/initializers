@@ -30,11 +30,6 @@ chmod 744 nvidia.sh
 ./nvidia.sh
 ```
 
-## Desktop environment
-
-
-
-
 ## Wayland
 
 ```bash
