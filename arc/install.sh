@@ -56,7 +56,7 @@ mount "${part_root}" /mnt
 mount --mkdir "${part_boot}" /mnt/boot
 
 # Install linux and useful packages
-pacstrap /mnt base linux linux-firmware nano man-db which sudo
+pacstrap /mnt base linux linux-firmware nano man-db which sudo wget unzip
 
 # Generate partition desciption file
 genfstab -U /mnt > /mnt/etc/fstab
