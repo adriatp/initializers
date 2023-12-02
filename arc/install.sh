@@ -56,7 +56,7 @@ mount "${part_root}" /mnt
 mount --mkdir "${part_boot}" /mnt/boot
 
 # Install linux and useful packages
-pacstrap /mnt base linux linux-firmware nano man-db which sudo wget unzip
+pacstrap /mnt base linux linux-firmware nano man-db which sudo wget unzip sudo pacman pipewire pipewire-{alsa,jack,media-session,pulse} amd-ucode networkmanager base-devel linux-headers git --needed
 
 # Generate partition desciption file
 genfstab -U /mnt > /mnt/etc/fstab
@@ -84,8 +84,8 @@ cat << EOF >> /mnt/etc/hosts
 EOF
 
 # Set microcode, git, networkmanager and driver packages
-pacstrap /mnt amd-ucode networkmanager base-devel linux-headers git --needed
 arch-chroot /mnt systemctl enable NetworkManager
+arch-chroot /mnt systemctl enable pipewire pipewire-pulse
 
 # Update fstab with secured mask
 umount /mnt/boot
