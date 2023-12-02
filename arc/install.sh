@@ -49,7 +49,7 @@ wipefs "${part_root}"
 
 # Format partitons
 mkfs.fat -F32 "${part_boot}"
-mkfs.ext4 "${part_root}"
+mkfs.ext4 -L ArcOS "${part_root}"
 
 # Mount partitions
 mount "${part_root}" /mnt
@@ -98,8 +98,9 @@ cat << EOF > /mnt/boot/loader/entries/arch.conf
 title   Arch Linux
 linux   /vmlinuz-linux
 initrd  /amd-ucode.img
+initrd  /acpi_override
 initrd  /initramfs-linux.img
-options root=/dev/sda2 rw
+options root=/dev/sda2 rw mem_sleep_default=deep
 EOF
 echo "default arch-*" > /mnt/boot/loader/loader.conf
 
