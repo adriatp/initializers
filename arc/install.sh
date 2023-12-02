@@ -98,9 +98,8 @@ cat << EOF > /mnt/boot/loader/entries/arch.conf
 title   Arch Linux
 linux   /vmlinuz-linux
 initrd  /amd-ucode.img
-initrd  /acpi_override
 initrd  /initramfs-linux.img
-options root=/dev/sda2 rw mem_sleep_default=deep
+options root=/dev/sda2 rw
 EOF
 echo "default arch-*" > /mnt/boot/loader/loader.conf
 
