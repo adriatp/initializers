@@ -1,4 +1,3 @@
-
-mkdir -p /home/${USER}/.config/kitty/kitty-themes
-cp kitty/kitty-themes/* /home/${USER}/.config/kitty/kitty-themes
-ln -s /home/${USER}/.config/kitty/kitty-themes/Cobalt_Neon.conf /home/${USER}/.config/kitty/theme.conf
+# Copy all from kitty folder into /home/${USER}/.config/kitty
+cp kitty/current-theme.conf /home/${USER}/.config/kitty/
+cp kitty/kitty.conf /home/${USER}/.config/kitty/
