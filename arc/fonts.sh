@@ -11,4 +11,9 @@ for font_zip in ~/.local/share/fonts/*.zip; do
   unzip "${font_zip}" -d "/home/${USER}/.local/share/fonts/${dir_name}"
   rm "$font_zip"
 done
+
+## Install a font to deal with emojis in terminal
+sudo pacman -S noto-fonts-emoji
+
+## Update font cache
 fc-cache -f -v
