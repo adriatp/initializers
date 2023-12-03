@@ -1,10 +1,14 @@
 #!/bin/bash
-mkdir -p ~/.local/share/fonts
-cp fonts/* ~/.local/share/fonts/
+
+## Copy all .zip in fonts dir to /home/${USER}/.local/share/fonts
+mkdir -p /home/${USER}/.local/share/fonts
+cp fonts/* /home/${USER}/.local/share/fonts/
+
+## Decompress .zip in /home/${USER}/.local/share/fonts and delete it
 for font_zip in ~/.local/share/fonts/*.zip; do
   dir_name=$(basename "$font_zip" .zip)
-  mkdir -p "~/.local/share/fonts/${dir_name}"
-  unzip "${font_zip}" -d "~/.local/share/fonts/${dir_name}"
-  rm "~/.local/share/fonts/$font_zip"
+  mkdir -p "/home/${USER}/.local/share/fonts/${dir_name}"
+  unzip "${font_zip}" -d "/home/${USER}/.local/share/fonts/${dir_name}"
+  rm "$font_zip"
 done
 fc-cache -f -v
