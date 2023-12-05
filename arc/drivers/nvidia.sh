@@ -14,10 +14,14 @@ sudo sed -i '/options/ s/$/ nvidia-drm.modeset=1/' /boot/loader/entries/arch.con
 
 # Add Early Loading of NVIDIA Modules
 sudo sed -i '/MODULES=()/c\MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)' /etc/mkinitcpio.conf
-sudo mkinitcpio -P
 
 # Turn on Kernel Mode Setting for Nvidia driver
-echo "options nvidia-drm modeset=1" > sudo tee /etc/modprobe.d/nvidia.conf > /dev/null
+echo "options nvidia-drm modeset=1" > nvidia.conf
+sudo mv nvidia.conf /etc/modprobe.d/
+sudo chown root:root /etc/modprobe.d/nvidia.conf
+
+# Regenerate initramfs environment
+sudo mkinitcpio -P
 
 # Adding the Pacman Hook
 sudo mkdir -p /etc/pacman.d/hooks/
