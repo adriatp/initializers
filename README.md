@@ -36,8 +36,7 @@ chmod 744 arc/drivers.sh
 #### Install user applications and configure them
 
 ```bash
-cd ~/initializers
-git pull origin main
+cd initializers
 chmod 744 arc/config.sh
 ./arc/config.sh
 ```

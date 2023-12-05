@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Install zsh
-sudo pacman -S zsh --noconfirm
+sudo pacman -Sy zsh --noconfirm
 cp .zshrc ~/.zshrc
 
 ## Install zsh plugins
-yay -S zsh-syntax-highlighting zsh-autosuggestions zsh-sudo-git
+yay -Sy zsh-syntax-highlighting zsh-autosuggestions zsh-sudo-git
 cat << EOF >> ~/.zshrc
 
 # ZSH plugins

@@ -2,7 +2,7 @@
 
 # Install asdf
 yay -Sy asdf-vm
-cat << EOF >> ~/.bashrc
+cat << EOF >> ~/.zshrc
 
 # Asdf
 source /opt/asdf-vm/asdf.sh

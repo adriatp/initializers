@@ -7,7 +7,7 @@ set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
 # Install driver packages
-yay -S nvidia nvidia-utils lib32-nvidia nvidia-settings
+yay -Sy nvidia nvidia-utils lib32-nvidia nvidia-settings
 
 # Enable DRM kernel mode setting
 sudo sed -i '/options/ s/$/ nvidia-drm.modeset=1/' /boot/loader/entries/arch.conf
