@@ -14,7 +14,6 @@ chmod 744 install.sh
 > *********
 > *********
 > /dev/sda
-# Hauria d'instalar yay
 ```
 
 ## Configure ArchLinux
@@ -37,5 +36,8 @@ chmod 744 arc/drivers.sh
 ### Install user applications and configure them
 
 ```bash
-./config.sh
+cd ~/initializers
+git pull origin main
+chmod 744 arc/config.sh
+./arc/config.sh
 ```

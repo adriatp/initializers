@@ -13,7 +13,7 @@ for font_zip in ~/.local/share/fonts/*.zip; do
 done
 
 ## Install a font to deal with emojis in terminal
-sudo pacman -S noto-fonts-emoji
+sudo pacman -S noto-fonts-emoji --noconfirm
 
 ## Update font cache
 fc-cache -f -v

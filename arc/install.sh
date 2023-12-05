@@ -56,7 +56,7 @@ mount "${part_root}" /mnt
 mount --mkdir "${part_boot}" /mnt/boot
 
 # Install linux and useful packages
-pacstrap /mnt base linux linux-firmware nano man-db which sudo wget unzip sudo pacman pipewire pipewire-{alsa,jack,pulse} wireplumber amd-ucode networkmanager base-devel linux-headers git --needed
+pacstrap /mnt base linux linux-firmware nano man-db which sudo wget unzip pacman pipewire pipewire-{alsa,jack,pulse} wireplumber amd-ucode networkmanager base-devel linux-headers git --needed
 
 # Generate partition desciption file
 genfstab -U /mnt > /mnt/etc/fstab

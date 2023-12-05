@@ -1,5 +1,5 @@
-# Copy all from kitty folder into /home/${USER}/.config/kitty
-cp kitty/current-theme.conf /home/${USER}/.config/kitty/
-cp kitty/kitty.conf /home/${USER}/.config/kitty/
-## Tip: change theme with kitten themes
+#!/bin/bash
 
+sudo pacman -Sy kitty --noconfirm
+mkdir -p /home/${USER}/.config/kitty/
+cp dotfiles/.config/kitty/* /home/${USER}/.config/kitty/

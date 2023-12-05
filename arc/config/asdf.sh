@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Install asdf
 yay -Sy asdf-vm
 cat << EOF >> ~/.bashrc
