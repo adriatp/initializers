@@ -1,5 +1,7 @@
 # Initializers
 
+# ArchLinux
+
 ## Install ArchLinux
 
 ```bash
@@ -12,28 +14,28 @@ chmod 744 install.sh
 > *********
 > *********
 > /dev/sda
+# Hauria d'instalar yay
 ```
 
-## Install yay
+## Configure ArchLinux
+
+### Clone initializers repository
 
 ```bash
-curl -L https://raw.githubusercontent.com/adriatp/initializers/main/arc/yay.sh > yay.sh
-chmod 744 yay.sh
-./yay.sh
+git clone https://github.com/adriatp/initializers.git
+cd initializers/arc
+chmod 744 *.sh
 ```
 
-## Nvidia drivers
+### Nvidia drivers
 
 ```bash
-curl -L https://raw.githubusercontent.com/adriatp/initializers/main/arc/nvidia.sh > nvidia.sh
-chmod 744 nvidia.sh
 ./nvidia.sh
 ```
 
-## Wayland
+### Config
 
 ```bash
-curl -L https://raw.githubusercontent.com/adriatp/initializers/main/arc/hyprland.sh > hyprland.sh
-chmod 744 hyprland.sh
-./hyprland.sh
+# Tota la configuracio s'executa a partir d'aqui
+./config.sh
 ```

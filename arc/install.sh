@@ -104,6 +104,16 @@ options root=/dev/sda2 rw
 EOF
 echo "default arch-*" > /mnt/boot/loader/loader.conf
 
+# Install yay 
+# arch-chroot /mnt su - "${user}" -c "git clone https://aur.archlinux.org/yay.git"
+
+# cd yay
+# makepkg -si
+# sudo sed -i '/^#\[multilib\]$/s/^#//' /etc/pacman.conf
+# sudo sed -i '/^\[multilib\]$/{n;s/^#//}' /etc/pacman.conf
+# yay -Syu
+# rm -rf ~/yay
+
 # Umount disks and reboot
-umount -a || true
-reboot
+# umount -a || true
+# reboot
