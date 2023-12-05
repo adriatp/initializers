@@ -9,4 +9,5 @@ chmod +x *.sh
 ./kitty.sh
 ./asdf.sh
 ./hyprland.sh
+./firefox.sh
 cd $current_dir

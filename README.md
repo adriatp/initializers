@@ -27,8 +27,7 @@ git clone https://github.com/adriatp/initializers.git
 #### Install yay (AUR) and drivers
 
 ```bash
-cd ~/initializers
-git pull origin main
+cd initializers
 chmod 744 arc/drivers.sh
 ./arc/drivers.sh
 ```
