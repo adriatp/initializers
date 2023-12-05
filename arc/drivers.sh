@@ -5,10 +5,10 @@ set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
 # Update pacman
-sudo pacman -Syu
+sudo pacman -Syu --noconfirm
 
 # Install missing firmware from pacman
-sudo pacman -Sy linux-firmware-qlogic
+sudo pacman -Sy linux-firmware-qlogic --noconfirm
 
 # Install yay
 current_dir=$PWD
@@ -25,7 +25,7 @@ rm -rf ~/yay
 yay -Syu
 
 # Install missing firmware from yay
-yay -Sy ast-firmware upd72020x-fw aic94xx-firware wd719x-firmware
+yay -Sy ast-firmware upd72020x-fw aic94xx-firmware wd719x-firmware
 
 # Reload initial ramdisk environment
 sudo mkinitcpio -P
