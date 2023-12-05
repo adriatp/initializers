@@ -1,8 +1,8 @@
 # Initializers
 
-# ArchLinux
+## ArchLinux
 
-## Install ArchLinux
+### Install ArchLinux
 
 ```bash
 loadkeys es
@@ -16,15 +16,15 @@ chmod 744 install.sh
 > /dev/sda
 ```
 
-## Configure ArchLinux
+### Configure ArchLinux
 
-### Clone initializers repository
+#### Clone initializers repository
 
 ```bash
-git clone https://github.com/adriatp/initializers.git ~/initializers
+git clone https://github.com/adriatp/initializers.git
 ```
 
-### Install yay (AUR) and drivers
+#### Install yay (AUR) and drivers
 
 ```bash
 cd ~/initializers
@@ -33,7 +33,7 @@ chmod 744 arc/drivers.sh
 ./arc/drivers.sh
 ```
 
-### Install user applications and configure them
+#### Install user applications and configure them
 
 ```bash
 cd ~/initializers
