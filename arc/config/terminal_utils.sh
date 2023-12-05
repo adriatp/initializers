@@ -5,7 +5,7 @@ curl -sS https://starship.rs/install.sh | sh
 cat << EOF >> ~/.bashrc
 
 # Starship
-eval "$(starship init bash)"
+eval "\$(starship init bash)"
 EOF
 mkdir -p /home/${USER}/.config
 cp dotfiles/.config/starship.toml /home/${USER}/.config/starship.toml
@@ -18,7 +18,7 @@ sudo pacman -S neofetch bat lsd --noconfirm
 mkdir -p /home/${USER}/.config/neofetch
 cp dotfiles/.config/neofetch/* /home/${USER}/.config/neofetch/
 
-# Bat
+## Bat
 cat << EOF >> ~/.bashrc
 
 # Bat
@@ -26,7 +26,7 @@ alias c=bat
 EOF
 source ~/.bashrc
 
-# Lsd
+## Lsd
 cat << EOF >> ~/.bashrc
 
 # Lsd
