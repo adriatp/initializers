@@ -88,6 +88,13 @@ arch-chroot /mnt systemctl enable NetworkManager
 # I leave it to remember how run a command with arch-chroot as a specific user
 # arch-chroot /mnt su - "${user}" -c "systemctl enable --user pipewire-pulse.service"
 
+# # Install yay (this passes to drivers.sh and run after reboot)
+# arch-chroot /mnt su - "${user}" -c "git clone https://aur.archlinux.org/yay.git"
+# arch-chroot /mnt su - "${user}" -c "(cd yay && makepkg -Si)"
+# sed -i '/^#\[multilib\]$/s/^#//' /mnt/etc/pacman.conf
+# sed -i '/^\[multilib\]$/{n;s/^#//}' /mnt/etc/pacman.conf
+# arch-chroot /mnt su - "${user}" -c "yay -Syu"
+
 # Update fstab with secured mask
 umount /mnt/boot
 mount -o uid=0,gid=0,fmask=0077,dmask=0077 /dev/sda1 /mnt/boot
@@ -103,16 +110,6 @@ initrd  /initramfs-linux.img
 options root=/dev/sda2 rw
 EOF
 echo "default arch-*" > /mnt/boot/loader/loader.conf
-
-# Install yay 
-# arch-chroot /mnt su - "${user}" -c "git clone https://aur.archlinux.org/yay.git"
-
-# cd yay
-# makepkg -si
-# sudo sed -i '/^#\[multilib\]$/s/^#//' /etc/pacman.conf
-# sudo sed -i '/^\[multilib\]$/{n;s/^#//}' /etc/pacman.conf
-# yay -Syu
-# rm -rf ~/yay
 
 # Umount disks and reboot
 # umount -a || true
