@@ -22,20 +22,20 @@ chmod 744 install.sh
 ### Clone initializers repository
 
 ```bash
-git clone https://github.com/adriatp/initializers.git
-cd initializers/arc
-chmod 744 *.sh
+git clone https://github.com/adriatp/initializers.git ~/initializers
 ```
 
-### Nvidia drivers
+### Install yay (AUR) and drivers
 
 ```bash
-./nvidia.sh
+cd ~/initializers
+git pull origin main
+chmod 744 arc/drivers.sh
+./arc/drivers.sh
 ```
 
-### Config
+### Install user applications and configure them
 
 ```bash
-# Tota la configuracio s'executa a partir d'aqui
 ./config.sh
 ```

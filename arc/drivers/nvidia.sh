@@ -21,5 +21,4 @@ echo "options nvidia-drm modeset=1" > sudo tee /etc/modprobe.d/nvidia.conf > /de
 
 # Adding the Pacman Hook
 sudo mkdir -p /etc/pacman.d/hooks
-curl -L https://raw.githubusercontent.com/adriatp/initializers/main/arc/nvidia.hook > nvidia.hook
-sudo mv nvidia.hook /etc/pacman.d/hooks/nvidia.hook
+sudo cp arc/drivers/hooks/nvidia.hook > /etc/pacman.d/hooks/nvidia.hook
