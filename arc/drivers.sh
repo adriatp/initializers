@@ -8,7 +8,7 @@ trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 sudo pacman -Syu
 
 # Install missing firmware from pacman
-sudo pacman -Sy linux-firmware-qlogic wd719x-firmware
+sudo pacman -Sy linux-firmware-qlogic
 
 # Install yay
 current_dir=pwd
