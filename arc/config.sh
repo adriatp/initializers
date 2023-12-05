@@ -1,7 +1,7 @@
 #!/bin/bash
 
 current_dir=$PWD
-cd config
+cd arc/config
 chmod +x *.sh
 ./fonts.sh
 ./kitty.sh
