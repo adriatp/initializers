@@ -9,7 +9,6 @@ eval "\$(starship init bash)"
 EOF
 mkdir -p /home/${USER}/.config
 cp dotfiles/.config/starship.toml /home/${USER}/.config/starship.toml
-source ~/.bashrc
 
 # Install neofetch, bat and lsd
 sudo pacman -S neofetch bat lsd --noconfirm
@@ -24,7 +23,6 @@ cat << EOF >> ~/.bashrc
 # Bat
 alias c=bat
 EOF
-source ~/.bashrc
 
 ## Lsd
 cat << EOF >> ~/.bashrc
@@ -33,4 +31,3 @@ cat << EOF >> ~/.bashrc
 alias l='lsd -lha'
 alias lt='lsd --tree'
 EOF
-source ~/.bashrc
