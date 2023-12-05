@@ -6,6 +6,6 @@ chmod +x *.sh
 ./fonts.sh
 ./kitty.sh
 ./asdf.sh
-./terminal_utils.sh
+./shell_utils.sh
 ./hyprland.sh
 cd $current_dir
