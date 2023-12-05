@@ -11,7 +11,7 @@ sudo pacman -Syu
 sudo pacman -Sy linux-firmware-qlogic
 
 # Install yay
-current_dir=pwd
+current_dir=$PWD
 cd ~
 git clone https://aur.archlinux.org/yay.git
 cd yay
