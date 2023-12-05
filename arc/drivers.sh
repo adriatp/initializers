@@ -11,7 +11,6 @@ sudo pacman -Syu
 sudo pacman -Sy linux-firmware-qlogic
 
 # Install yay
-current_dir=$PWD
 cd ~
 git clone https://aur.archlinux.org/yay.git
 cd yay
@@ -25,11 +24,11 @@ rm -rf ~/yay
 yay -Syu
 
 # Install missing firmware from yay
-yay -Sy ast-firmware upd72020x-fx aic94xx-firware wd719x-firmware
+yay -Sy ast-firmware upd72020x-fw aic94xx-firware wd719x-firmware
 
 # Reload initial ramdisk environment
 sudo mkinitcpio -P
 
 # Install nvidia drivers
 chmod 744 arc/drivers/nvidia.sh
-./nvidia.sh
+./arc/drivers/nvidia.sh
