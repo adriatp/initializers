@@ -39,3 +39,11 @@ cd initializers
 chmod 744 arc/config.sh
 ./arc/config.sh
 ```
+
+### Update repo dotfiles with os dotfiles
+
+```bash
+cd initializers
+chmod 744 arc/update_config.sh
+./arc/update_config.sh
+```
