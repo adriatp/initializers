@@ -2,11 +2,11 @@
 
 # Install asdf
 yay -Sy asdf-vm
-cat << EOF >> ~/.zshrc
+# cat << EOF >> ~/.zshrc
 
-# Asdf
-source /opt/asdf-vm/asdf.sh
-EOF
+# # Asdf
+# source /opt/asdf-vm/asdf.sh
+# EOF
 
 # # Install ruby
 
