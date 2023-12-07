@@ -8,6 +8,8 @@ chmod +x *.sh
 ./zsh.sh
 ./kitty.sh
 ./asdf.sh
+./lf.sh
+./neovim.sh
 ./hyprland.sh
 ./firefox.sh
 cd $current_dir
