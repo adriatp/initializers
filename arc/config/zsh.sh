@@ -2,7 +2,6 @@
 
 # Install zsh
 sudo pacman -Sy zsh --noconfirm
-cp .zshrc ~/.zshrc
 
 ## Install zsh plugins
 yay -Sy zsh-syntax-highlighting zsh-autosuggestions zsh-sudo-git
@@ -50,3 +49,6 @@ cp dotfiles/.config/neofetch/* /home/${USER}/.config/neofetch/
 # alias l='lsd -lha'
 # alias lt='lsd --tree'
 # EOF
+
+cp arc/config/dotfiles/.zshrc ~/.zshrc
+cp arc/config/dotfiles/.bashrc ~/.bashrc
