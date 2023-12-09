@@ -1,13 +1,14 @@
 #!/bin/bash
 
-repo_dir="arc/config/dotfiles/"
-os_dir="/home/${USER}/"
-find "$repo_dir" -type f | while read -r file; do
-  relative_path="${file#$repo_dir}"
-  os_path="${os_dir}${relative_path}"
-  repo_path="${repo_dir}${relative_path}"
-  if [ -e "$os_path" ]; then
-    echo "Copying $os_path to $repo_path"
-    cp $os_path $repo_path
-  fi
-done
+# Copy files
+cp -f /home/$USER/.zshrc arc/config/dotfiles/.zshrc
+cp -f /home/$USER/.bashrc arc/config/dotfiles/.bashrc
+cp -f /home/$USER/.config/starship.toml arc/config/dotfiles/starship.toml
+
+# Copy dirs
+cp -rf /home/$USER/.config/hypr arc/config/dotfiles/.config/hypr
+cp -rf /home/$USER/.config/kitty arc/config/dotfiles/.config/kitty
+cp -rf /home/$USER/.config/lf arc/config/dotfiles/.config/lf
+cp -rf /home/$USER/.config/neofetch arc/config/dotfiles/.config/neofetch
+cp -rf /home/$USER/.config/waybar arc/config/dotfiles/.config/waybar
+cp -rf /home/$USER/.config/wofi arc/config/dotfiles/.config/wofi

@@ -2,13 +2,6 @@
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/atp/.zshrc'
 
-# LF
-fpath=(/home/atp/.config/lf/ $fpath)
-LFCD="/home/atp/.config/lf/lfcd.sh"
-if [ -f "$LFCD" ]; then
-    source "$LFCD"
-fi
-
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -34,7 +27,7 @@ eval "$(starship init zsh)"
 
 # Bat
 alias c=cat
-alias cat=bat
+alias cat=bat --color always
 
 # Lsd
 alias l=ls
@@ -43,3 +36,6 @@ alias lt='lsd --tree'
 
 # Asdf
 source /opt/asdf-vm/asdf.sh
+
+# Path
+export PATH="/home/atp/.config/lf:$PATH"
