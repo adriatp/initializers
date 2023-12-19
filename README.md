@@ -47,3 +47,11 @@ cd initializers
 chmod 744 arc/update_config.sh
 ./arc/update_config.sh
 ```
+
+## RPI
+
+```bash
+curl -L https://raw.githubusercontent.com/adriatp/initializers/main/ssh/install.sh > install.sh
+chmod 744 install.sh
+./install.sh
+```
