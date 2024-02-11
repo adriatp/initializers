@@ -5,7 +5,9 @@ set -uo pipefail
 trap 's=$?; echo "$0: Error on line "$LINENO": $BASH_COMMAND"; exit $s' ERR
 
 ## Set git configuration
-git_username="adriatp"
+read -p "Git username: " git_username
+: ${git_username:?"Username cannot be empty"}
+
 read -p "Git email: " git_email
 : ${git_email:?"Email cannot be empty"}
 
