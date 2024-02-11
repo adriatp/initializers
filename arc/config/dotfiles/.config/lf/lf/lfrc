@@ -58,6 +58,8 @@ cmd restore_trash ${{
   trash-restore
 }}
 
+cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
+
 # Bindings
 map d
 map m
@@ -90,3 +92,6 @@ map gr cd ~/repos
 map gv cd ~/videos
 map gs cd ~/.local/bin
 map gt cd ~/.local/share/Trash/files
+
+# Rename
+map <f-2> push :rename<space>
