@@ -30,8 +30,7 @@ alias c=cat
 alias cat=bat --color always
 
 # Lsd
-alias l=ls
-alias ls='lsd -lha'
+alias l='lsd -lha'
 alias lt='lsd --tree'
 
 # Asdf
